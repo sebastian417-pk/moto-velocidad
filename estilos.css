@@ -1,40 +1,77 @@
 :root{
-  --bg: #071022;
-  --card: #0d1320;
-  --accent: #ff6b00;
+  --bg: #0b1020;
+  --card: #0f1724;
   --muted: #98a0b3;
+  --accent: #ff6b00;
+  --accent2: #24d39a;
   --text: #e6eef6;
-  --radius: 10px;
+  --radius: 12px;
+  --pad: 16px;
+  --maxw: 1100px;
 }
 
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family: system-ui, Arial, sans-serif;
-  background: linear-gradient(180deg,#02111a,var(--bg));
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: linear-gradient(180deg,#061018,var(--bg));
   color:var(--text);
-  padding:18px;
+  padding:20px;
 }
-.container{max-width:1000px;margin:0 auto;padding:8px}
 
-#encabezado{margin-bottom:14px}
-.sub{color:var(--muted);margin:0}
+.container{max-width:var(--maxw);margin:0 auto;padding:8px}
 
-section{background:linear-gradient(180deg,#071026,#0b1330);padding:14px;border-radius:var(--radius);margin-bottom:12px}
+.top{margin-bottom:14px}
+.top .container{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#titulo{font-size:1.6rem}
+.lead{color:var(--muted);margin:0}
 
-#introduccion p{line-height:1.4}
+.layout{display:grid;grid-template-columns:280px 1fr;gap:18px;align-items:start}
 
-#objetivo{border-left:4px solid var(--accent);padding-left:10px}
+.panel{background:linear-gradient(180deg,#071026,#0b1330);padding:var(--pad);border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
 
-figure{margin:0;display:block}
-figure img{width:100%;height:auto;border-radius:8px;display:block}
-img[alt*="Moto"]{box-shadow:0 8px 24px rgba(0,0,0,0.5)}
+.sidebar .toc{padding:0;margin:0;list-style:none}
+.sidebar .toc li{margin:8px 0}
 
-.audio audio{width:100%;margin-top:6px}
+.main h2::before{content:"🏁 ";margin-right:6px}
+.main h2{margin-top:0}
 
-h2::before{content:"🏁 ";margin-right:6px}
-a:hover{text-decoration:underline}
+.tech-list{padding-left:18px}
+.tech-list li{margin:6px 0;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
+.tech-list li[data-type="apex"]{border-left:4px solid var(--accent)}
+.tech-list li[data-type="accel"]{border-left:4px solid var(--accent2)}
 
-@media (max-width:720px){
-  .video-embed iframe{width:100%;height:200px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.grid img{width:100%;height:auto;border-radius:8px;display:block}
+img[alt*="Moto"]{box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+
+.media-block{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
+.video-local video{width:100%;border-radius:8px}
+.video-embed iframe{width:100%;height:360px;border-radius:8px}
+
+.audio audio{width:100%;margin-top:8px}
+.transcripcion{margin-top:8px;color:var(--muted)}
+
+.btn{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+.btn:hover{opacity:0.92}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--accent)}
+
+.kpi-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px}
+.small{font-size:0.85rem}
+.muted{color:var(--muted)}
+
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);padding:20px}
+.modal.visible{display:flex}
+.modal .modal-box{width:720px;max-width:95%;background:linear-gradient(180deg,#071026,#0b1330);padding:20px;border-radius:12px;position:relative}
+.close{position:absolute;right:10px;top:10px;background:transparent;border:none;color:var(--muted);font-size:1rem;cursor:pointer}
+
+.options{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.option{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);cursor:pointer}
+.option.correct{outline:3px solid rgba(36,211,154,0.15);background:linear-gradient(90deg,#e8fff5,#f2fffb)}
+.option.incorrect{opacity:0.7;filter:grayscale(0.2)}
+
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr}
+  .video-embed iframe{height:220px}
 }
+
