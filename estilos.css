@@ -1,0 +1,40 @@
+:root{
+  --bg: #071022;
+  --card: #0d1320;
+  --accent: #ff6b00;
+  --muted: #98a0b3;
+  --text: #e6eef6;
+  --radius: 10px;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, Arial, sans-serif;
+  background: linear-gradient(180deg,#02111a,var(--bg));
+  color:var(--text);
+  padding:18px;
+}
+.container{max-width:1000px;margin:0 auto;padding:8px}
+
+#encabezado{margin-bottom:14px}
+.sub{color:var(--muted);margin:0}
+
+section{background:linear-gradient(180deg,#071026,#0b1330);padding:14px;border-radius:var(--radius);margin-bottom:12px}
+
+#introduccion p{line-height:1.4}
+
+#objetivo{border-left:4px solid var(--accent);padding-left:10px}
+
+figure{margin:0;display:block}
+figure img{width:100%;height:auto;border-radius:8px;display:block}
+img[alt*="Moto"]{box-shadow:0 8px 24px rgba(0,0,0,0.5)}
+
+.audio audio{width:100%;margin-top:6px}
+
+h2::before{content:"🏁 ";margin-right:6px}
+a:hover{text-decoration:underline}
+
+@media (max-width:720px){
+  .video-embed iframe{width:100%;height:200px}
+}
