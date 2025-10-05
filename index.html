@@ -4,51 +4,132 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Moto Velocidad - Proyecto</title>
+  <meta name="description" content="Moto Velocidad - proyecto con HTML, CSS y JS" />
   <link rel="stylesheet" href="estilos.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <header id="encabezado">
+  <header class="top">
     <div class="container">
-      <h1>Moto Velocidad</h1>
-      <p class="sub">Velocidad, técnica y seguridad</p>
+      <h1 id="titulo">Moto Velocidad</h1>
+      <p class="lead">Velocidad, técnica y seguridad en pista</p>
+      <div class="controls">
+        <button id="openQuiz" class="btn small">Actividad</button>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <section id="introduccion">
-      <h2>Introducción</h2>
-      <p>Breve presentación sobre moto velocidad, técnicas y seguridad en pista.</p>
-    </section>
+  <main class="container layout">
+    <aside class="panel sidebar">
+      <section>
+        <h2>Índice</h2>
+        <ul class="toc">
+          <li><a href="#introduccion">Introducción</a></li>
+          <li><a href="#objetivo">Objetivo</a></li>
+          <li><a href="#tecnicas">Técnicas</a></li>
+          <li><a href="#seguridad">Seguridad</a></li>
+          <li><a href="#multimedia">Multimedia</a></li>
+        </ul>
+      </section>
 
-    <section id="objetivo">
-      <h2>Objetivo</h2>
-      <p>Analizar técnicas básicas de conducción y medidas de seguridad para pilotos.</p>
-    </section>
+      <section>
+        <h3>Autor</h3>
+        <p>Sebastián Bejarano</p>
+      </section>
+    </aside>
 
-    <section id="multimedia">
-      <h2>Multimedia</h2>
+    <section class="panel main">
+      <article id="introduccion">
+        <h2>Introducción</h2>
+        <p class="muted">Este proyecto presenta conceptos y recursos sobre moto velocidad, con imágenes, video y audio.</p>
+      </article>
 
-      <figure>
-        <img src="assets/moto1.jpg" alt="Moto en pista acelerando" />
-        <figcaption>Moto en pista</figcaption>
-      </figure>
+      <article id="objetivo">
+        <h2>Objetivo</h2>
+        <p>Analizar técnicas de conducción en pista y medidas de seguridad para pilotos y equipo técnico.</p>
+      </article>
 
-      <div class="audio">
-        <h3>Audio</h3>
-        <audio controls>
-          <source src="assets/engine.mp3" type="audio/mpeg" />
-        </audio>
-      </div>
+      <article id="tecnicas">
+        <h2>Técnicas de pista</h2>
+        <ul class="tech-list">
+          <li data-type="apex">Trazado de curvas y punto de frenada</li>
+          <li data-type="accel">Control de aceleración fuera de la curva</li>
+          <li data-type="pos">Posición del piloto y peso en la moto</li>
+        </ul>
+      </article>
 
-      <div class="video-embed">
-        <h3>Video</h3>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/BPWFQWTZgH8" title="Video" frameborder="0" allowfullscreen></iframe>
-      </div>
+      <article id="seguridad">
+        <h2>Seguridad</h2>
+        <p>Equipo obligatorio: casco integral, mono con protecciones, botas y revisiones mecánicas antes de cada sesión.</p>
+      </article>
+
+      <article id="multimedia">
+        <h2>Multimedia</h2>
+
+        <div class="grid">
+          <figure>
+            <img src="assets/moto1.jpg" alt="Moto en pista acelerando" />
+            <figcaption>Moto en plena aceleración</figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/moto2.jpg" alt="Piloto tomando una curva" />
+            <figcaption>Piloto tomando la curva</figcaption>
+          </figure>
+        </div>
+
+        <div class="media-block">
+          <div class="video-local">
+            <h3>Video local</h3>
+            <video controls width="640">
+              <source src="assets/pitlane.mp4" type="video/mp4" />
+              Tu navegador no soporta video.
+            </video>
+          </div>
+
+          <div class="video-embed">
+            <h3>Video en línea</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/BPWFQWTZgH8" title="Video de ejemplo" frameborder="0" allowfullscreen></iframe>
+          </div>
+
+          <div class="audio">
+            <h3>Audio de motor</h3>
+            <audio controls>
+              <source src="assets/engine.mp3" type="audio/mpeg" />
+              Tu navegador no soporta audio.
+            </audio>
+            <div class="transcripcion">
+              <h4>Transcripción</h4>
+              <p>El motor acelera en salida de curva. Revisión: presión de llantas y frenos antes de cada sesión.</p>
+            </div>
+          </div>
+        </div>
+      </article>
     </section>
   </main>
 
   <footer class="foot container">
-    <p>Autor: Sebastián Bejarano — Proyecto Unidad 2</p>
+    <p>Proyecto Unidad 2 — Moto Velocidad</p>
   </footer>
+
+  <div id="quizModal" class="modal" aria-hidden="true" role="dialog">
+    <div class="modal-box">
+      <button id="closeQuiz" class="close">✕</button>
+      <h3>Actividad: Moto Velocidad</h3>
+      <div id="quizArea">
+        <div id="questionText" class="question"></div>
+        <div id="options" class="options"></div>
+        <div class="quiz-controls">
+          <div id="qProgress" class="muted small"></div>
+          <div><button id="nextBtn" class="btn">Siguiente</button></div>
+        </div>
+      </div>
+      <div id="resultScreen" style="display:none">
+        <h4>Resultado</h4>
+        <p id="scoreText"></p>
+        <button id="restartQuiz" class="btn">Volver a intentar</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
